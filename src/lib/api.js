@@ -40,3 +40,26 @@ export const api = {
       body: JSON.stringify(productData),
     }).then((res) => res.json()),
 };
+
+export const inventoryAPI = {
+  getProducts: async () => {
+    const res = await fetch(`${API_URL}/products`);
+    return res.json();
+  },
+  addProduct: async (productData) => {
+    const res = await fetch(`${API_URL}/products`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(productData),
+    });
+    return res.json();
+  },
+  restock: async (id, quantity) => {
+    const res = await fetch(`${API_URL}/products/${id}/restock`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ quantity }),
+    });
+    return res.json();
+  },
+};

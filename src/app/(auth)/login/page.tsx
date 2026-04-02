@@ -26,7 +26,6 @@ export default function LoginPage() {
       const data = await api.login(email, password);
 
       if (data.success) {
-        // Save user info to localStorage so the app remembers them
         localStorage.setItem("user", JSON.stringify(data.user));
         router.push("/dashboard");
       } else {
@@ -39,20 +38,18 @@ export default function LoginPage() {
     }
   };
 
-  // Requirement: Demo Login button
   const handleDemoLogin = () => {
     const demoEmail = "admin@inventory.com";
     const demoPass = "123456";
     setEmail(demoEmail);
     setPassword(demoPass);
 
-    // We use a small timeout to let the state update visually before submitting
     setTimeout(() => {
       setIsLoading(true);
       api.login(demoEmail, demoPass).then((data) => {
         if (data.success) {
           localStorage.setItem("user", JSON.stringify(data.user));
-          router.push("/dashboard");
+          router.push("/");
         }
       });
     }, 500);
