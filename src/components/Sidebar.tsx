@@ -12,13 +12,13 @@ import {
 } from "lucide-react";
 
 const menuItems = [
-  { name: "Dashboard", icon: LayoutDashboard, href: "/dashboard" },
-  { name: "Inventory", icon: Package, href: "/dashboard/inventory" },
-  { name: "Orders", icon: ShoppingCart, href: "/dashboard/orders" },
+  { name: "Dashboard", icon: LayoutDashboard, href: "/" },
+  { name: "Inventory", icon: Package, href: "inventory" },
+  { name: "Orders", icon: ShoppingCart, href: "/orders" },
   {
     name: "Restock Queue",
     icon: AlertTriangle,
-    href: "/dashboard/restock",
+    href: "/restock",
     color: "text-amber-500",
   },
   { name: "Activity Log", icon: History, href: "/dashboard/activity" },
@@ -35,7 +35,6 @@ export default function Sidebar() {
 
   return (
     <div className="w-64 bg-white border-r border-slate-200 flex flex-col h-screen sticky top-0">
-      {/* Logo Section */}
       <div className="p-6 flex items-center gap-3">
         <div className="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center text-white">
           <Package size={20} />
@@ -45,7 +44,6 @@ export default function Sidebar() {
         </span>
       </div>
 
-      {/* Navigation Links */}
       <nav className="flex-1 px-4 space-y-1 mt-4">
         {menuItems.map((item) => {
           const isActive = pathname === item.href;
@@ -78,7 +76,6 @@ export default function Sidebar() {
         })}
       </nav>
 
-      {/* Bottom Section: User & Logout */}
       <div className="p-4 border-t border-slate-100">
         <button
           onClick={handleLogout}
