@@ -63,3 +63,26 @@ export const inventoryAPI = {
     return res.json();
   },
 };
+
+export const orderAPI = {
+  getOrders: async () => {
+    const res = await fetch(`${API_URL}/orders`);
+    return res.json();
+  },
+  createOrder: async (orderData) => {
+    const res = await fetch(`${API_URL}/orders`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(orderData),
+    });
+    return res.json(); // This will return { success: true } or { message: "Error..." }
+  },
+  updateStatus: async (id, status) => {
+    const res = await fetch(`${API_URL}/orders/${id}/status`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ status }),
+    });
+    return res.json();
+  },
+};

@@ -26,17 +26,16 @@ export default function InventoryPage() {
     threshold: "5",
   });
 
-  ```
-    const fetchProducts = async () => {
-      setIsLoading(true);
-      const data = await inventoryAPI.getProducts();
-      setProducts(data);
-      setIsLoading(false);
-    };
-  
-    useEffect(() => {
-      fetchProducts();
-    }, []);
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
+  const fetchProducts = async () => {
+    setIsLoading(true);
+    const data = await inventoryAPI.getProducts();
+    setProducts(data);
+    setIsLoading(false);
+  };
 
   const handleAddProduct = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -186,9 +185,7 @@ export default function InventoryPage() {
                     <td className="px-6 py-4">
                       <button
                         className="text-indigo-600 hover:text-indigo-800 font-semibold text-sm"
-                        onClick={() => {
-                          /* Implement Edit Logic */
-                        }}
+                        onClick={() => {}}
                       >
                         Edit
                       </button>
