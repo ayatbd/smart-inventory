@@ -86,3 +86,28 @@ export const orderAPI = {
     return res.json();
   },
 };
+
+export const restockAPI = {
+  // ... (previous calls)
+  getRestockData: async () => {
+    const res = await fetch(`${API_URL}/dashboard-stats`);
+    return res.json();
+  },
+  restock: async (id, quantity) => {
+    const res = await fetch(`${API_URL}/products/${id}/restock`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ quantity }),
+    });
+    return res.json();
+  },
+};
+
+export const activityAPI = {
+  // Fetch logs (We'll reuse the dashboard-stats or create a dedicated one)
+  getActivities: async () => {
+    const res = await fetch(`${API_URL}/dashboard-stats`);
+    const data = await res.json();
+    return data.activities; // Returns the array of logs
+  },
+};

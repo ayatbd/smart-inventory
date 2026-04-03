@@ -21,7 +21,7 @@ const menuItems = [
     href: "/restock",
     color: "text-amber-500",
   },
-  { name: "Activity Log", icon: History, href: "/dashboard/activity" },
+  { name: "Activity Log", icon: History, href: "/activity" },
 ];
 
 export default function Sidebar() {
